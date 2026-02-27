@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>情绪内耗测试</title>
+<title>你的累，有多少是自己给的</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 :root{--bg:#FDF8F4;--white:#FFFFFF;--td:#3A3330;--tm:#7A6E6A;--tl:#B0A49E;--bd:#EDE4DC;--pk:#E8A0A0;--lv:#C4B8D8;--sg:#A8C4B0;--sh:rgba(180,150,130,0.12)}
@@ -12,8 +12,6 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);min-height:100vh
 body::before{content:'';position:fixed;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(232,160,160,.12) 0%,transparent 70%);pointer-events:none;z-index:0}
 body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(168,196,176,.12) 0%,transparent 70%);pointer-events:none;z-index:0}
 .wrap{max-width:460px;margin:0 auto;padding:0 22px 80px;position:relative;z-index:1}
-
-/* ===== 激活码页 ===== */
 #pg-activate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 0 40px}
 .lock-icon{width:90px;height:90px;background:linear-gradient(135deg,#F2C4A8,#E8A0A0);border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 28px;box-shadow:0 12px 32px rgba(232,160,160,.3);animation:pulse 4s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 12px 32px rgba(232,160,160,.3)}50%{box-shadow:0 16px 40px rgba(232,160,160,.45)}}
@@ -22,17 +20,16 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .act-card{background:var(--white);border-radius:24px;padding:28px;width:100%;box-shadow:0 4px 24px var(--sh);border:1px solid var(--bd);margin-bottom:16px}
 .act-label{font-size:12px;color:var(--tl);letter-spacing:2px;margin-bottom:12px;text-align:left}
 .act-input-wrap{position:relative;margin-bottom:16px}
-.act-input{width:100%;padding:16px 50px 16px 18px;border:1.5px solid var(--bd);border-radius:16px;font-size:15px;font-family:'Noto Sans SC',sans-serif;color:var(--td);background:var(--bg);outline:none;letter-spacing:3px;transition:border-color .25s ease;text-transform:uppercase}
+.act-input{width:100%;padding:16px 50px 16px 18px;border:1.5px solid var(--bd);border-radius:16px;font-size:15px;font-family:'Noto Sans SC',sans-serif;color:var(--td);background:var(--bg);outline:none;letter-spacing:2px;transition:border-color .25s ease}
 .act-input:focus{border-color:var(--pk)}
 .act-input::placeholder{letter-spacing:1px;font-size:13px;color:var(--tl)}
 .act-eye{position:absolute;right:16px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:18px;color:var(--tl);user-select:none}
-.act-error{font-size:12px;color:#D4756A;text-align:left;margin-bottom:12px;min-height:18px;transition:opacity .25s ease}
+.act-error{font-size:12px;color:#D4756A;text-align:left;margin-bottom:12px;min-height:18px}
 .btn-activate{width:100%;padding:17px;background:linear-gradient(135deg,#E8A0A0,#C4B8D8);color:white;border:none;border-radius:50px;font-size:15px;font-family:'Noto Sans SC',sans-serif;font-weight:500;letter-spacing:2px;cursor:pointer;box-shadow:0 8px 28px rgba(232,160,160,.4);transition:all .3s ease}
-.btn-activate:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(232,160,160,.5)}
+.btn-activate:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.btn-activate:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(232,160,160,.5)}
 .act-hint{font-size:11px;color:var(--tl);line-height:1.8}
 .act-hint a{color:var(--pk);text-decoration:none}
-
-/* ===== 封面 ===== */
 #pg-cover{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 0 40px;min-height:100vh}
 .flower-wrap{position:relative;width:180px;height:180px;margin:0 auto 36px}
 .fr{position:absolute;border-radius:50%;border:1px solid}
@@ -61,8 +58,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .btn-start{width:100%;max-width:280px;padding:17px 24px;background:linear-gradient(135deg,#E8A0A0,#C4B8D8);color:white;border:none;border-radius:50px;font-size:16px;font-family:'Noto Sans SC',sans-serif;font-weight:500;letter-spacing:2px;cursor:pointer;box-shadow:0 8px 28px rgba(232,160,160,.4);transition:all .3s ease}
 .btn-start:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(232,160,160,.5)}
 .cover-tip{margin-top:14px;font-size:11px;color:var(--tl)}
-
-/* ===== 测试页 ===== */
 #pg-quiz{display:none;padding-top:36px}
 .qtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .qstep{font-size:12px;color:var(--tl);letter-spacing:1px}
@@ -79,13 +74,11 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 .opt.chosen{border-color:var(--pk);background:linear-gradient(135deg,rgba(232,160,160,.1),rgba(196,184,216,.08))}
 .oc{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s ease;font-size:11px;color:transparent}
 .opt.chosen .oc{border-color:var(--pk);background:linear-gradient(135deg,#E8A0A0,#C4B8D8);color:white}
-.ot{font-size:14px;color:var(--td);line-height:1.5;font-weight:400}
+.ot{font-size:14px;color:var(--td);line-height:1.5}
 .opt.chosen .ot{font-weight:500}
 .btn-next{width:100%;padding:17px;background:linear-gradient(135deg,#E8A0A0,#C4B8D8);color:white;border:none;border-radius:50px;font-size:15px;font-family:'Noto Sans SC',sans-serif;font-weight:500;letter-spacing:1px;cursor:pointer;opacity:0;transform:translateY(12px);transition:all .4s cubic-bezier(.4,0,.2,1);pointer-events:none;box-shadow:0 6px 24px rgba(232,160,160,.35);margin-top:20px}
 .btn-next.show{opacity:1;transform:translateY(0);pointer-events:all}
 .btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(232,160,160,.45)}
-
-/* ===== 结果页 ===== */
 #pg-result{display:none;padding-top:36px}
 .rhl{text-align:center;font-size:11px;letter-spacing:3px;color:var(--tl);margin-bottom:24px}
 .rc{background:var(--white);border-radius:28px;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 40px var(--sh);border:1px solid var(--bd)}
@@ -141,8 +134,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 </head>
 <body>
 <div class="wrap">
-
-<!-- 激活码页 -->
 <div id="pg-activate">
   <div class="lock-icon">🔑</div>
   <h1 class="act-title">输入激活码</h1>
@@ -150,7 +141,7 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   <div class="act-card">
     <div class="act-label">激活码</div>
     <div class="act-input-wrap">
-      <input class="act-input" id="code-input" type="password" placeholder="请输入激活码" maxlength="12" autocomplete="off" autocorrect="off" spellcheck="false">
+      <input class="act-input" id="code-input" type="password" placeholder="请输入激活码" maxlength="16" autocomplete="off" spellcheck="false">
       <span class="act-eye" id="eye-btn">👁</span>
     </div>
     <div class="act-error" id="act-error"></div>
@@ -159,7 +150,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   <p class="act-hint">还没有激活码？<a href="#">点击购买 9.9元</a><br>购买后私信回复「激活码」即可获取</p>
 </div>
 
-<!-- 封面 -->
 <div id="pg-cover">
   <div class="flower-wrap">
     <div class="fr fr1"></div><div class="fr fr2"></div><div class="fr fr3"></div>
@@ -178,7 +168,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   <p class="cover-tip">请凭第一直觉作答，结果更准确</p>
 </div>
 
-<!-- 测试页 -->
 <div id="pg-quiz">
   <div class="qtop">
     <span class="qstep">QUESTION</span>
@@ -196,7 +185,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   </div>
 </div>
 
-<!-- 结果页 -->
 <div id="pg-result">
   <div class="rhl">✦ TEST RESULT ✦</div>
   <div class="rc fade-in" id="res-card">
@@ -229,46 +217,43 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
 </div>
 
 <script>
-(function() {
+(function(){
+  var SUPABASE_URL = 'https://ypqyqbamyoowjbdelddn.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_EAofLeUUzsN3Gz9Fqeimzg_t4CUy8XA';
 
-  // ============================================================
-  // 激活码配置区（你自己改这里）
-  // 格式：'激活码': true  加一行就是多一个码
-  // 用完的码改成 false，就无法再使用
-  // ============================================================
-  var CODES = {
-    'XIAO001': true,
-    'XIAO002': true,
-    'XIAO003': true,
-    'XIAO004': true,
-    'XIAO005': true,
-    'LUNA2024': true,
-    'BLOOM888': true,
-    'ROSE999': true
-  };
-
-  // 已使用的码（存在浏览器本地，防止同一设备重复用）
-  // 注意：换设备可以重复用，这是纯前端方案的局限
-  var USED_KEY = 'emot_used_codes';
-
-  function getUsed() {
-    try { return JSON.parse(localStorage.getItem(USED_KEY) || '{}'); } catch(e){ return {}; }
-  }
-  function markUsed(code) {
-    try { var u=getUsed(); u[code]=1; localStorage.setItem(USED_KEY, JSON.stringify(u)); } catch(e){}
+  function sbFetch(path, opts) {
+    var url = SUPABASE_URL + '/rest/v1/' + path;
+    var headers = {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    };
+    if (opts && opts.headers) {
+      Object.assign(headers, opts.headers);
+    }
+    return fetch(url, Object.assign({}, opts, { headers: headers }));
   }
 
-  function validateCode(raw) {
+  async function validateCode(raw) {
     var code = raw.trim().toUpperCase();
-    if (!code) return '请输入激活码';
-    if (!(code in CODES)) return '激活码无效，请检查后重试';
-    if (!CODES[code]) return '该激活码已停用';
-    var used = getUsed();
-    if (used[code]) return '该激活码在此设备已使用过';
-    return null; // null = 验证通过
-  }
+    if (!code) return { ok: false, msg: '请输入激活码' };
 
-  // ============================================================
+    var res = await sbFetch('activation_codes?code=eq.' + encodeURIComponent(code) + '&select=id,is_used');
+    var data = await res.json();
+
+    if (!data || data.length === 0) return { ok: false, msg: '激活码无效，请检查后重试' };
+    var row = data[0];
+    if (row.is_used) return { ok: false, msg: '该激活码已被使用' };
+
+    // 标记为已使用
+    await sbFetch('activation_codes?id=eq.' + row.id, {
+      method: 'PATCH',
+      body: JSON.stringify({ is_used: true, used_at: new Date().toISOString() })
+    });
+
+    return { ok: true };
+  }
 
   var Q = [
     {t:'发完一条消息，对方一直没回，你会……', h:'选最接近你真实状态的一项',
@@ -304,77 +289,52 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   ];
 
   var R = [
-    {lv:'lv1',min:0,max:12,badge:'内耗绿洲',emoji:'🌿',
-     title:'你的能量几乎没有泄漏',
-     tag:'情绪自愈力极强，内心有一片真正的安静之地',
-     desc:'你对情绪有很强的消化能力，不容易被外界评价或突发事件长久影响。你能快速从负面状态抽离，把能量用在真正值得的地方。这种内心的稳定感是很多人努力追求却难以抵达的状态。',
-     traits:['情绪稳定','自我边界清晰','活在当下','不轻易内耗','恢复力强'],
-     advTitle:'继续保持的方向',
-     adv:[{i:'🌱',t:'定期觉察情绪来源，保持这份平衡感'},{i:'💬',t:'你是天然的情绪锚点，可以温柔影响身边的人'},{i:'🔍',t:'注意不要因为自己情绪好，而忽视他人的情绪需求'},{i:'✨',t:'继续滋养让你感到平静的事物和关系'}]},
-    {lv:'lv2',min:13,max:24,badge:'轻度内耗',emoji:'🌸',
-     title:'偶尔漏电，但还在掌控中',
-     tag:'你有内耗，但你意识得到——这已经很了不起了',
-     desc:'你会在某些事情上消耗额外的精力，但整体还在可控范围内。你有一定的自我觉察能力，能感知到内耗正在发生，只是有时候停不下来。这个阶段的关键，是学会提前截断——在情绪开始螺旋之前，温柔地按下暂停键。',
-     traits:['有自我觉察','偶尔过度思考','在意他人感受','有时难以放下','敏感细腻'],
-     advTitle:'让能量少漏一些',
-     adv:[{i:'⏸️',t:'发现自己开始反复想时，立刻做一件需要专注的事来打断'},{i:'📝',t:'练习事后不复盘——做完决定就放下，不要反复质疑'},{i:'🕐',t:'设定担忧时间，每天只允许自己焦虑15分钟'},{i:'🌙',t:'睡前做3次深呼吸，告诉自己今天已经结束了'}]},
-    {lv:'lv3',min:25,max:35,badge:'中度内耗',emoji:'🍂',
-     title:'你每天悄悄漏掉大量能量',
-     tag:'那些没说出口的话，正在一点点消耗着你',
-     desc:'你的能量有相当一部分消耗在反复回想、过度揣摩和无法翻篇上。你常常觉得累，却说不清楚在累什么。其实你是在消耗精力维持一个表面还好的状态，同时内心在不停地运转。长期如此，会悄悄影响睡眠和做事的热情。',
-     traits:['敏感细腻','难以放下','过度思考','表达需求少','情绪积压'],
-     advTitle:'你现在最需要的',
-     adv:[{i:'📓',t:'把脑子里的想法写下来——外化比内化消耗更少的能量'},{i:'🗣️',t:'练习说出我不舒服，减少憋在心里的话'},{i:'🚶',t:'每天给自己30分钟不思考时间，散步、发呆都行'},{i:'💭',t:'减少对他人反应的过度解读，90%的揣摩都是自己吓自己'}]},
-    {lv:'lv4',min:36,max:45,badge:'重度内耗',emoji:'🌧️',
-     title:'你的能量正在大量流失',
-     tag:'你不是不够努力，是把力气用在了看不见的地方',
-     desc:'你有相当程度的情绪内耗模式。大量精力被用于反复思考、自我怀疑、揣摩他人、压抑表达。你的疲惫不是偷懒，而是一直在做隐形的情绪劳动。这种模式通常从很早就开始了，已经内化为自动运转的习惯，但它是可以慢慢改变的。请温柔地对待自己。',
-     traits:['高度敏感','自我怀疑','情绪积压','难以放空','隐性疲惫感强'],
-     advTitle:'最想对你说的话',
-     adv:[{i:'🤍',t:'停止对自己说这有什么好难过的——接纳情绪才是改变的起点'},{i:'📖',t:'找一个可以说真心话的出口，哪怕只是写日记'},{i:'🌿',t:'认真考虑和心理咨询师聊聊，你值得被专业支持'},{i:'☕',t:'每天做一件纯粹让自己开心的小事，哪怕只有5分钟'}]}
+    {lv:'lv1',min:0,max:12,badge:'内耗绿洲',emoji:'🌿',title:'你的能量几乎没有泄漏',tag:'情绪自愈力极强，内心有一片真正的安静之地',desc:'你对情绪有很强的消化能力，不容易被外界评价或突发事件长久影响。你能快速从负面状态抽离，把能量用在真正值得的地方。这种内心的稳定感是很多人努力追求却难以抵达的状态。',traits:['情绪稳定','自我边界清晰','活在当下','不轻易内耗','恢复力强'],advTitle:'继续保持的方向',adv:[{i:'🌱',t:'定期觉察情绪来源，保持这份平衡感'},{i:'💬',t:'你是天然的情绪锚点，可以温柔影响身边的人'},{i:'🔍',t:'注意不要因为自己情绪好，而忽视他人的情绪需求'},{i:'✨',t:'继续滋养让你感到平静的事物和关系'}]},
+    {lv:'lv2',min:13,max:24,badge:'轻度内耗',emoji:'🌸',title:'偶尔漏电，但还在掌控中',tag:'你有内耗，但你意识得到——这已经很了不起了',desc:'你会在某些事情上消耗额外的精力，但整体还在可控范围内。你有一定的自我觉察能力，能感知到内耗正在发生，只是有时候停不下来。这个阶段的关键，是学会提前截断——在情绪开始螺旋之前，温柔地按下暂停键。',traits:['有自我觉察','偶尔过度思考','在意他人感受','有时难以放下','敏感细腻'],advTitle:'让能量少漏一些',adv:[{i:'⏸️',t:'发现自己开始反复想时，立刻做一件需要专注的事来打断'},{i:'📝',t:'练习事后不复盘——做完决定就放下，不要反复质疑'},{i:'🕐',t:'设定担忧时间，每天只允许自己焦虑15分钟'},{i:'🌙',t:'睡前做3次深呼吸，告诉自己今天已经结束了'}]},
+    {lv:'lv3',min:25,max:35,badge:'中度内耗',emoji:'🍂',title:'你每天悄悄漏掉大量能量',tag:'那些没说出口的话，正在一点点消耗着你',desc:'你的能量有相当一部分消耗在反复回想、过度揣摩和无法翻篇上。你常常觉得累，却说不清楚在累什么。其实你是在消耗精力维持一个表面还好的状态，同时内心在不停地运转。长期如此，会悄悄影响睡眠和做事的热情。',traits:['敏感细腻','难以放下','过度思考','表达需求少','情绪积压'],advTitle:'你现在最需要的',adv:[{i:'📓',t:'把脑子里的想法写下来——外化比内化消耗更少的能量'},{i:'🗣️',t:'练习说出我不舒服，减少憋在心里的话'},{i:'🚶',t:'每天给自己30分钟不思考时间，散步、发呆都行'},{i:'💭',t:'减少对他人反应的过度解读，90%的揣摩都是自己吓自己'}]},
+    {lv:'lv4',min:36,max:45,badge:'重度内耗',emoji:'🌧️',title:'你的能量正在大量流失',tag:'你不是不够努力，是把力气用在了看不见的地方',desc:'你有相当程度的情绪内耗模式。大量精力被用于反复思考、自我怀疑、揣摩他人、压抑表达。你的疲惫不是偷懒，而是一直在做隐形的情绪劳动。这种模式通常从很早就开始了，已经内化为自动运转的习惯，但它是可以慢慢改变的。请温柔地对待自己。',traits:['高度敏感','自我怀疑','情绪积压','难以放空','隐性疲惫感强'],advTitle:'最想对你说的话',adv:[{i:'🤍',t:'停止对自己说这有什么好难过的——接纳情绪才是改变的起点'},{i:'📖',t:'找一个可以说真心话的出口，哪怕只是写日记'},{i:'🌿',t:'认真考虑和心理咨询师聊聊，你值得被专业支持'},{i:'☕',t:'每天做一件纯粹让自己开心的小事，哪怕只有5分钟'}]}
   ];
 
   var curQ=0, score=0, chosen=null, result=null;
-
   function $(id){ return document.getElementById(id); }
 
-  // ===== 激活码逻辑 =====
   function initActivate() {
     $('eye-btn').addEventListener('click', function(){
-      var inp = $('code-input');
-      if(inp.type==='password'){ inp.type='text'; $('eye-btn').textContent='🙈'; }
-      else { inp.type='password'; $('eye-btn').textContent='👁'; }
+      var inp=$('code-input');
+      if(inp.type==='password'){inp.type='text';$('eye-btn').textContent='🙈';}
+      else{inp.type='password';$('eye-btn').textContent='👁';}
     });
-
-    $('code-input').addEventListener('input', function(){
-      $('act-error').textContent='';
-    });
-
-    $('code-input').addEventListener('keydown', function(e){
-      if(e.key==='Enter') doActivate();
-    });
-
+    $('code-input').addEventListener('input', function(){ $('act-error').textContent=''; });
+    $('code-input').addEventListener('keydown', function(e){ if(e.key==='Enter') doActivate(); });
     $('btn-activate').addEventListener('click', doActivate);
   }
 
-  function doActivate() {
+  async function doActivate() {
     var raw = $('code-input').value;
-    var err = validateCode(raw);
-    if(err){
-      var el = $('act-error');
-      el.textContent = err;
-      $('code-input').style.borderColor='#D4756A';
-      setTimeout(function(){ $('code-input').style.borderColor=''; },2000);
-      return;
+    var btn = $('btn-activate');
+    var errEl = $('act-error');
+    btn.disabled = true;
+    btn.textContent = '验证中…';
+    errEl.textContent = '';
+    try {
+      var res = await validateCode(raw);
+      if (!res.ok) {
+        errEl.textContent = res.msg;
+        $('code-input').style.borderColor = '#D4756A';
+        setTimeout(function(){ $('code-input').style.borderColor=''; }, 2000);
+        btn.disabled = false;
+        btn.textContent = '解锁测试 →';
+      } else {
+        $('pg-activate').style.display = 'none';
+        $('pg-cover').style.display = 'flex';
+      }
+    } catch(e) {
+      errEl.textContent = '网络异常，请稍后重试';
+      btn.disabled = false;
+      btn.textContent = '解锁测试 →';
     }
-    // 验证通过
-    var code = raw.trim().toUpperCase();
-    markUsed(code);
-    $('pg-activate').style.display='none';
-    $('pg-cover').style.display='flex';
   }
 
-  // ===== 测试逻辑 =====
   function startQuiz() {
     $('pg-cover').style.display='none';
     $('pg-quiz').style.display='block';
@@ -382,8 +342,8 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
   }
 
   function renderQ() {
-    var q = Q[curQ];
-    var wrap = $('q-wrap');
+    var q=Q[curQ];
+    var wrap=$('q-wrap');
     wrap.classList.remove('slide-in'); void wrap.offsetWidth; wrap.classList.add('slide-in');
     $('q-frac').textContent=(curQ+1)+' / '+Q.length;
     $('prog-fill').style.width=(curQ/Q.length*100)+'%';
@@ -428,8 +388,7 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
     for(var i=0;i<R.length;i++){ if(score>=R[i].min&&score<=R[i].max){ result=R[i]; break; } }
     $('res-card').className='rc fade-in '+result.lv;
     $('advice-card').className='ac fade-in '+result.lv;
-    var c=0;
-    var timer=setInterval(function(){ c+=2; if(c>=norm){c=norm;clearInterval(timer);} $('res-score').textContent=c; },18);
+    var c=0, timer=setInterval(function(){ c+=2; if(c>=norm){c=norm;clearInterval(timer);} $('res-score').textContent=c; },18);
     $('res-raw').textContent='原始得分 '+score+' / '+maxRaw;
     $('res-badge').textContent=result.badge;
     $('res-emoji').textContent=result.emoji;
@@ -464,7 +423,6 @@ body::after{content:'';position:fixed;bottom:-200px;left:-200px;width:500px;heig
     $('btn-share').addEventListener('click', copyResult);
     $('btn-retry').addEventListener('click', restart);
   });
-
 })();
 </script>
 </body>
